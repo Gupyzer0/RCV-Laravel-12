@@ -1,0 +1,24 @@
+.vertical-table {
+    border-collapse: collapse;
+}
+
+.vertical-table th,
+.vertical-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.tablest{
+    table-layout: fixed;
+    width: 100%;
+}
+.tablest th{
+    background: rgba(77, 77, 77, 0.719);
+    background-color: #ddd;
+}
+.tablest th, .tablest td{
+    border: 1px solid rgba(182, 175, 175, 0.493);
+    width: 20%;
+    padding: 5px;
+}

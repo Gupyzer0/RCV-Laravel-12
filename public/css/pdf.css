@@ -1,0 +1,38 @@
+*{
+    font-family: arial, "sans-serif";
+    font-size: 11px;
+    background: url(/images/hoja.png) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+  }
+
+  table, th, td{
+    padding: 3px;
+    /* border-bottom: 1px solid black; */
+    border-collapse: collapse;
+    border: none;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  /* .vp-table .right-bd{
+    border-right: 1px solid black;
+  }
+
+  .vp-table .rid-bb{
+    border-bottom: none;
+  }
+
+  .dp-table .rid-bb{
+    border-bottom: none;
+  }
+
+  .sign-table .rid-bb{
+    border-bottom: none;
+  }
+
+  .vp-table .end-vp{
+    border-bottom: 1px solid black;
+  } */

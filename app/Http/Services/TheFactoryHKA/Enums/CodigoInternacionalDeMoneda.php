@@ -1,0 +1,203 @@
+<?php
+
+namespace App\Http\Services\TheFactoryHKA\Enums;
+
+/**
+ * Código internacional de moneas ISO 4217
+ */
+abstract class CodigoInternacionalDeMoneda {
+     const ADB_Unit_of_Account = 'XUA';
+     const Afghani = 'AFN';
+     const Algerian_Dinar = 'DZD';
+     const Arab_Accounting_Dinar = 'XAD';
+     const Argentine_Peso = 'ARS';
+     const Armenian_Dram = 'AMD';
+     const Aruban_Florin = 'AWG';
+     const Australian_Dollar = 'AUD';
+     const Azerbaijan_Manat = 'AZN';
+     const Bahamian_Dollar = 'BSD';
+     const Bahraini_Dinar = 'BHD';
+     const Baht = 'THB';
+     const Balboa = 'PAB';
+     const Barbados_Dollar = 'BBD';
+     const Belarusian_Ruble = 'BYN';
+     const Belize_Dollar = 'BZD';
+     const Bermudian_Dollar = 'BMD';
+     const Bolivar_Soberano = 'VED'; // <------- ACTUAL
+     const Bolivar_Soberano_Old = 'VES'; // Viejo
+     const Boliviano = 'BOB';
+     const Bond_Markets_Unit_European_Composite_Unit_EURCO = 'XBA';
+     const Bond_Markets_Unit_European_Monetary_Unit_E_M_U_6 = 'XBB';
+     const Bond_Markets_Unit_European_Unit_of_Account_17_E_U_A_17 = 'XBD';
+     const Bond_Markets_Unit_European_Unit_of_Account_9_E_U_A_9 = 'XBC';
+     const Brazilian_Real = 'BRL';
+     const Brunei_Dollar = 'BND';
+     const Bulgarian_Lev = 'BGN';
+     const Burundi_Franc = 'BIF';
+     const CFA_Franc_BCEAO = 'XOF';
+     const CFA_Franc_BEAC = 'XAF';
+     const CFP_Franc = 'XPF';
+     const Cabo_Verde_Escudo = 'CVE';
+     const Canadian_Dollar = 'CAD';
+     const Caribbean_Guilder = 'XCG';
+     const Cayman_Islands_Dollar = 'KYD';
+     const Chilean_Peso = 'CLP';
+     const Codes_specifically_reserved_for_testing_purposes = 'XTS';
+     const Colombian_Peso = 'COP';
+     const Comorian_Franc = 'KMF';
+     const Congolese_Franc = 'CDF';
+     const Convertible_Mark = 'BAM';
+     const Cordoba_Oro = 'NIO';
+     const Costa_Rican_Colon = 'CRC';
+     const Cuban_Peso = 'CUP';
+     const Czech_Koruna = 'CZK';
+     const Dalasi = 'GMD';
+     const Danish_Krone = 'DKK';
+     const Denar = 'MKD';
+     const Djibouti_Franc = 'DJF';
+     const Dobra = 'STN';
+     const Dominican_Peso = 'DOP';
+     const Dong = 'VND';
+     const East_Caribbean_Dollar = 'XCD';
+     const Egyptian_Pound = 'EGP';
+     const El_Salvador_Colon = 'SVC';
+     const Ethiopian_Birr = 'ETB';
+     const Euro = 'EUR';
+     const Falkland_Islands_Pound = 'FKP';
+     const Fiji_Dollar = 'FJD';
+     const Forint = 'HUF';
+     const Ghana_Cedi = 'GHS';
+     const Gibraltar_Pound = 'GIP';
+     const Gold = 'XAU';
+     const Gourde = 'HTG';
+     const Guarani = 'PYG';
+     const Guinean_Franc = 'GNF';
+     const Guyana_Dollar = 'GYD';
+     const Hong_Kong_Dollar = 'HKD';
+     const Hryvnia = 'UAH';
+     const Iceland_Krona = 'ISK';
+     const Indian_Rupee = 'INR';
+     const Iranian_Rial = 'IRR';
+     const Iraqi_Dinar = 'IQD';
+     const Jamaican_Dollar = 'JMD';
+     const Jordanian_Dinar = 'JOD';
+     const Kenyan_Shilling = 'KES';
+     const Kina = 'PGK';
+     const Kuwaiti_Dinar = 'KWD';
+     const Kwanza = 'AOA';
+     const Kyat = 'MMK';
+     const Lao_Kip = 'LAK';
+     const Lari = 'GEL';
+     const Lebanese_Pound = 'LBP';
+     const Lek = 'ALL';
+     const Lempira = 'HNL';
+     const Leone = 'SLE';
+     const Liberian_Dollar = 'LRD';
+     const Libyan_Dinar = 'LYD';
+     const Lilangeni = 'SZL';
+     const Loti = 'LSL';
+     const Malagasy_Ariary = 'MGA';
+     const Malawi_Kwacha = 'MWK';
+     const Malaysian_Ringgit = 'MYR';
+     const Mauritius_Rupee = 'MUR';
+     const Mexican_Peso = 'MXN';
+     const Mexican_Unidad_de_Inversion_UDI = 'MXV';
+     const Moldovan_Leu = 'MDL';
+     const Moroccan_Dirham = 'MAD';
+     const Mozambique_Metical = 'MZN';
+     const Mvdol = 'BOV';
+     const Naira = 'NGN';
+     const Nakfa = 'ERN';
+     const Namibia_Dollar = 'NAD';
+     const Nepalese_Rupee = 'NPR';
+     const New_Israeli_Sheqel = 'ILS';
+     const New_Taiwan_Dollar = 'TWD';
+     const New_Zealand_Dollar = 'NZD';
+     const Ngultrum = 'BTN';
+     const North_Korean_Won = 'KPW';
+     const Norwegian_Krone = 'NOK';
+     const Ouguiya = 'MRU';
+     const Pa_anga = 'TOP';
+     const Pakistan_Rupee = 'PKR';
+     const Palladium = 'XPD';
+     const Pataca = 'MOP';
+     const Peso_Uruguayo = 'UYU';
+     const Philippine_Peso = 'PHP';
+     const Platinum = 'XPT';
+     const Pound_Sterling = 'GBP';
+     const Pula = 'BWP';
+     const Qatari_Rial = 'QAR';
+     const Quetzal = 'GTQ';
+     const Rand = 'ZAR';
+     const Rial_Omani = 'OMR';
+     const Riel = 'KHR';
+     const Romanian_Leu = 'RON';
+     const Rufiyaa = 'MVR';
+     const Rupiah = 'IDR';
+     const Russian_Ruble = 'RUB';
+     const Rwanda_Franc = 'RWF';
+     const SDR_Special_Drawing_Right = 'XDR';
+     const Saint_Helena_Pound = 'SHP';
+     const Saudi_Riyal = 'SAR';
+     const Serbian_Dinar = 'RSD';
+     const Seychelles_Rupee = 'SCR';
+     const Silver = 'XAG';
+     const Singapore_Dollar = 'SGD';
+     const Sol = 'PEN';
+     const Solomon_Islands_Dollar = 'SBD';
+     const Som = 'KGS';
+     const Somali_Shilling = 'SOS';
+     const Somoni = 'TJS';
+     const South_Sudanese_Pound = 'SSP';
+     const Sri_Lanka_Rupee = 'LKR';
+     const Sucre = 'XSU';
+     const Sudanese_Pound = 'SDG';
+     const Surinam_Dollar = 'SRD';
+     const Swedish_Krona = 'SEK';
+     const Swiss_Franc = 'CHF';
+     const Syrian_Pound = 'SYP';
+     const Taka = 'BDT';
+     const Tala = 'WST';
+     const Tanzanian_Shilling = 'TZS';
+     const Tenge = 'KZT';
+     const The_codes_assigned_for_transactions_where_no_currency_is_involved = 'XXX';
+     const Trinidad_and_Tobago_Dollar = 'TTD';
+     const Tugrik = 'MNT';
+     const Tunisian_Dinar = 'TND';
+     const Turkish_Lira = 'TRY';
+     const Turkmenistan_New_Manat = 'TMT';
+     const UAE_Dirham = 'AED';
+     const US_Dollar = 'USD';
+     const US_Dollar_Next_day = 'USN';
+     const Uganda_Shilling = 'UGX';
+     const Unidad_Previsional = 'UYW';
+     const Unidad_de_Fomento = 'CLF';
+     const Unidad_de_Valor_Real = 'COU';
+     const Uruguay_Peso_en_Unidades_Indexadas_UI = 'UYI';
+     const Uzbekistan_Sum = 'UZS';
+     const Vatu = 'VUV';
+     const WIR_Euro = 'CHE';
+     const WIR_Franc = 'CHW';
+     const Won = 'KRW';
+     const Yemeni_Rial = 'YER';
+     const Yen = 'JPY';
+     const Yuan_Renminbi = 'CNY';
+     const Zambian_Kwacha = 'ZMW';
+     const Zimbabwe_Gold = 'ZWG';
+     const Zloty = 'PLN';
+
+    /** @deprecated Se mantiene por compatibilidad */
+     const Kuna = 'HRK';
+
+    /** @deprecated Se mantiene por compatibilidad */
+     const Leone_Old = 'SLL';
+
+    /** @deprecated Se mantiene por compatibilidad */
+     const Netherlands_Antillean_Guilder = 'ANG';
+
+    /** @deprecated Se mantiene por compatibilidad */
+     const Peso_Convertible = 'CUC';
+
+    /** @deprecated Se mantiene por compatibilidad */
+     const Zimbabwe_Dollar = 'ZWL';
+}
