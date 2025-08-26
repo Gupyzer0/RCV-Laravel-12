@@ -9,6 +9,11 @@ return Application::configure(basePath: dirname(__DIR__))
         web: __DIR__.'/../routes/web.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
+        then: function () {
+            Route::middleware('web')->group(base_path('routes/administrador.php')); // administrador
+            Route::middleware('web')->group(base_path('routes/moderador.php')); // moderador
+            Route::middleware('web')->group(base_path('routes/usuario.php')); // usuario
+        },
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([

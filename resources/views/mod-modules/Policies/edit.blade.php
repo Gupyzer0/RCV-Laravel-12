@@ -8,10 +8,9 @@
 
 	</div>
 	<div class="card-body">
-		<form action="/mod/edit-policyd/{{$id}}" method="POST" enctype="multipart/form-data"  id="form_policies">
+		<form action="{{ route('moderador.polizas.update', $policy) }}" method="POST" enctype="multipart/form-data"  id="form_policies">
 			@csrf
 			<input type="hidden" name="_method" value="PUT">
-
 
 			{{-- CONTRATANTE --}}
 			<h5 style="color:black;">Asegurado</h5>

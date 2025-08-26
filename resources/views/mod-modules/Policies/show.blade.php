@@ -5,7 +5,7 @@
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
-        <a class="nav-link ml-2 bg-succes active" href="/mod/pdf-digital/{{$policy->id}}" target="blank">Exportar PDF-DIGITAL</a>
+        <a class="nav-link ml-2 bg-succes active" href="{{ route('moderador.polizas.pdf', $policy->id) }}" target="blank">Exportar PDF-DIGITAL</a>
       </li>
 
 
@@ -31,7 +31,7 @@
     </div>
     <div class="col-4 text-center">
       <h6><span class="font-weight-bold mr-2">Vencimiento: </span>
-        @if($expiring_date > $today)
+        @if($policy->expiring_date > $today)
         <span class="text-success">{{\Carbon\Carbon::parse($policy->expiring_date)->format('d-m-Y')}}</h6>
         </span>
         @elseif($expiring_date == $today)
@@ -181,12 +181,6 @@
         <h6><span class="font-weight-bold mr-2">Prima: </span>{{number_format($policy->price->campop6 * $foreign_reference, 2)}} Bs.S</h6>
         @endif
         <h6 class="mt-5"><span class="font-weight-bold mr-2">Total Prima: </span> {{ number_format($policy->total_premium * $foreign_reference, 2)}} Bs.S</h6>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-          <a href="/user/renew-policy/{{$policy->id}}" class="btn btn-warning" style="width: 100%">Renovar Poliza</a>
       </div>
     </div>
      <div class="row mt-2">

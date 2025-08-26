@@ -43,7 +43,7 @@
     {{-- Moderador --}}
     @hasrole('moderador')
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('index.policies.mod') }}">
+            <a class="nav-link" href="{{ route('moderador.polizas.index') }}">
                 <i class="fas fa-sticky-note"></i>
                 <span>Pólizas</span>
             </a>
@@ -65,14 +65,14 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('index.users.mod') }}">
+            <a class="nav-link" href="{{ route('moderador.users.index') }}">
                 <i class="fas fa-users"></i>
                 <span>Usuarios</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('index.notpaid.mod')}}">
+            <a class="nav-link" href="{{ route('moderador.pagos.index-pendientes') }}">
                 <i class="fas fa-money-check-alt"></i>
                 <span>Consultas de pago</span>
             </a>

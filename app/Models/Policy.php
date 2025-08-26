@@ -29,8 +29,26 @@ class Policy extends Model
         'total_all', 'foreign', 'dolar', 'statusu', 'image_tp', 'image_ci'
     ];
 
-    // Relaciones
+    // Scopes (filtros)
+    public function scopeFiltrarNPoliza($query, $filtro) {
+        if ($filtro) {
+            return $query->where('id',$filtro);
+        }
+    }
+    
+    public function scopeFiltrarCedulaCliente($query, $filtro) {
+        if ($filtro) {
+            return $query->where('client_ci','LIKE', "%$filtro%");
+        }
+    }
 
+    public function scopeFiltrarPlaca($query, $filtro) {
+        if ($filtro) {
+            return $query->where('vehicle_registration','LIKE',"%$filtro%");
+        }
+    }
+
+    // Relaciones
     public function pagos(){
         return $this->hasMany(Pagos::class);
     }

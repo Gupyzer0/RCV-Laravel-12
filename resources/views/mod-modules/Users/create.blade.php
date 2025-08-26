@@ -9,7 +9,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register.mod') }}" id="register_form" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('moderador.users.store') }}" id="register_form" enctype="multipart/form-data">
                         @csrf
 
                         {{-- SECCIÓN 1: IDENTIFICACIÓN PRINCIPAL --}}
@@ -400,7 +400,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Registrar
                                 </button>
-                                <a href="{{ route('index.users') }}" class="btn btn-danger" style="width: 90px;"> {{-- Ajusta la ruta si es necesario --}}
+                                <a href="{{ route('moderador.users.index') }}" class="btn btn-danger" style="width: 90px;"> {{-- Ajusta la ruta si es necesario --}}
                                     Volver
                                 </a>
                             </div>
@@ -491,7 +491,6 @@ document.addEventListener('DOMContentLoaded', function () {
     toggleFields(); 
 });
 </script>
-
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
