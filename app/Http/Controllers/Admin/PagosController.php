@@ -8,18 +8,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-use App\User;
-use App\Moderator;
-use App\Policy;
-use App\ForeignUnit;
 use App\Http\Requests\CalcularComision;
-use App\Payment;
-
 use App\Http\Requests\StorePago;
 use App\Http\Requests\StorePagoManual;
 use App\Http\Services\Bnc;
 use Exception;
 use PDF;
+
+use App\Models\User;
+use App\Models\Moderator;
+use App\Models\Policy;
+use App\Models\ForeignUnit;
+use App\Models\Payment;
 
 /**
  * Controlador para todo lo que tenga que ver con el administrador y las polizas por pagar.

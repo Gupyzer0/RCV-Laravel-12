@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Jobs\FacturacionApiRequest;
 use App\Http\Services\TheFactoryHKA\TheFactoryHka;
 
-use App\Policy;
+use App\Models\Policy;
 
 class FacturacionController extends Controller
 {

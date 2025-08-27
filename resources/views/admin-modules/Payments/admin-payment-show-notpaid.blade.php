@@ -1,4 +1,4 @@
-@extends('layouts.admin-modules')
+@extends('layouts.app')
 
 @section('module')
 <a class="btn btn-warning shadow mb-2" href="{{ route('index.notpaid')}}">Regresar</a>

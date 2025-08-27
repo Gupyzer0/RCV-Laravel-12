@@ -1,4 +1,4 @@
-@extends('layouts.admin-modules')
+@extends('layouts.app')
 @section('module')
 <a class="btn btn-light font-weight-bold text-primary d-inline-block" href="{{ route('index.policies')}}">Polizas</a>
 <div class="card shadow mb-4">

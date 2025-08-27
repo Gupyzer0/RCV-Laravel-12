@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Gate;
+
+use App\Models\Policy;
+use App\Policies\PolizaPolicy;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        Gate::policy(Policy::class, PolizaPolicy::class);
     }
 
     /**

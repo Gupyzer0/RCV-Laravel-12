@@ -3,7 +3,7 @@
 namespace App\Http\Services\TheFactoryHKA;
 
 use Exception;
-use App\Llave;
+use App\Models\Llave;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Log;

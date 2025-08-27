@@ -8,7 +8,7 @@ class Llave extends Model
 {
     protected $table = 'llaves';
     protected $guarded = [];
-    protected $dates = [
-        'expiracion',
+    protected $casts = [
+        'expiracion' => 'datetime',
     ];
 }

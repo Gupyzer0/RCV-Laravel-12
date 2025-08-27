@@ -50,9 +50,12 @@ Route::prefix('mod')->middleware('role:moderador')->group(function () {
     //Route::get('/index-paymentd/not-paid/{id}', [ModeratorController::class, 'show_not_paid_mod'])->name('mod.show.notpaid');
     Route::get('/pagos-pendientes/{user}', [PagosController::class, 'index_pendientes_por_usuario'] )->name('moderador.pagos.pendientes-por-usuario');
 
+    Route::post('/selected-pay/{id}', [ModeratorController::class, 'selected_pay'])->name('selectedm.pay.submit');
+
+
     Route::get('/exportd-payments/{id}', [ModeratorController::class, 'mod_exportpdf'])->name('mod.payments.export');
 
-    Route::post('/selected-pay/{id}', [ModeratorController::class, 'selected_pay'])->name('selectedm.pay.submit');
+    
     Route::get('/index-paymentd/report/{id}', [ModeratorController::class, 'report_mod'])->name('mod.report.policies');
     Route::post('/payments-reports', [ModeratorController::class, 'report_all_mod'])->name('mod.report.all.policies');
     Route::get('/search-payments/notpaid', [ModeratorController::class, 'search_usersnopaid'])->name('mod.search.notpaid');

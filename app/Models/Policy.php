@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
+use App\Models\Scopes\PolizasScope;
+use Illuminate\Support\Carbon;
 
+#[ScopedBy([PolizasScope::class])]
 class Policy extends Model
 {
 	use SoftDeletes;//, LogsActivity;
@@ -32,7 +36,7 @@ class Policy extends Model
     // Scopes (filtros)
     public function scopeFiltrarNPoliza($query, $filtro) {
         if ($filtro) {
-            return $query->where('id',$filtro);
+            return $query->where('idp',$filtro);
         }
     }
     
@@ -45,6 +49,30 @@ class Policy extends Model
     public function scopeFiltrarPlaca($query, $filtro) {
         if ($filtro) {
             return $query->where('vehicle_registration','LIKE',"%$filtro%");
+        }
+    }
+
+    public function scopeFiltrarEstatus($query, $filtro) {
+        if ($filtro) {
+            switch ($filtro) {
+                case 'vigente':
+                    return $query->where('expiring_date','>',Carbon::today())->where('statusu',null);
+
+                case 'vence hoy':
+                    return $query->where('expiring_date',Carbon::today())->where('statusu',null);
+
+                case 'vencida':
+                    return $query->where('expiring_date','<',Carbon::today())->where('statusu',null);
+
+                case 'anulada':
+                    return $query->where('statusu',1);                
+            }
+        }
+    }
+
+    public function scopeFiltrarVendedor($query, $filtro) {
+        if($filtro) {
+            return $query->where('user_id',$filtro);
         }
     }
 

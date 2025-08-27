@@ -19,6 +19,7 @@ use App\Http\Controllers\PaymentsController;
 // use App\Http\Controllers\ChangeUsersPassword;
 // use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerifyController;
+use App\Http\Controllers\PolizasController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -58,6 +59,28 @@ Route::get('/condiciones', [VerifyController::class, 'downloadConditions'])->nam
 //     return response()->download($path);
 // });
 
+// Polizas
+Route::middleware(['auth'])->group(function () {
+    
+    Route::get('/polizas', [PolizasController::class, 'index'])->name('polizas.index');
+
+    Route::middleware(['can:view,poliza'])->group(function () {
+        Route::get('/polizas/{poliza}', [PolizasController::class, 'show'])->name('polizas.show');
+        Route::get('/polizas/{poliza}/reportes/pdf', [PolizasController::class, 'pdf'])->name('polizas.pdf');
+        Route::get('/polizas/{poliza}/reportes/pdf-digital', [PolizasController::class, 'pdf_digital'])->name('polizas.pdf-digital');
+    });
+   
+    Route::middleware(['can:update,poliza'])->group(function () {
+        Route::get('/polizas/{poliza}/edit', [PolizasController::class, 'edit'])->name('polizas.edit');
+        Route::put('/polizas/{poliza}', [PolizasController::class, 'update'])->name('polizas.update');
+    });
+    
+    Route::middleware(['can:delete,poliza'])->group(function () {
+        Route::delete('/polizas/{poliza}', [PolizasController::class, 'delete'])->name('polizas.delete');
+        Route::patch('/polizas/{poliza}/anular', [PolizasController::class, 'anular'])->name('polizas.anular');
+        Route::patch('/polizas/{poliza}/desanular', [PolizasController::class, 'desanular'])->name('polizas.desanular');
+    });
+});
 
 
 //Consultas AJAX
