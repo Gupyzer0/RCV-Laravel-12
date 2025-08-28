@@ -86,8 +86,8 @@ Route::prefix('admin')->middleware('role:administrador')->group(function () {
 
     // Rutas Usuarios
     // Registrar usuario
-    //Route::get('/register-user', 'Auth\RegisterController@showRegistrationForm')->name('register.user'); TODO
-    //Route::post('/register-user', 'Auth\RegisterController@register')->name('register'); TODO
+    Route::get('/register-user', 'Auth\RegisterController@showRegistrationForm')->name('register.user'); // TODO
+    Route::post('/register-user', 'Auth\RegisterController@register')->name('admin.register'); // TODO
 
     Route::get('/index-users', [AdminController::class, 'index_users'])->name('index.users');
     Route::get('/index-usersm', [AdminController::class, 'index_users_m'])->name('index.users.m');

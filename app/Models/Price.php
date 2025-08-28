@@ -38,7 +38,7 @@ class Price extends Model
         return $this->belongsTo(VehicleClass::class, 'class_id')->withTrashed();
     }
 
-    public function office(){
-        return $this->belongsTo(Office::class, 'office_id', 'id')->withTrashed();
-    }
+    // public function office(){
+    //     return $this->belongsTo(Office::class, 'office_id', 'id')->withTrashed();
+    // }
 }

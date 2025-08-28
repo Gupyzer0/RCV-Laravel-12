@@ -1,4 +1,4 @@
-@extends('layouts.admin-modules')
+@extends('layouts.app')
 
 @section('module')
 <div class="card shadow mb-4">
@@ -14,7 +14,7 @@
 						<th>ID</th>
 						<th>Clase de vehículo</th>
 						<th>Descripción del Plan</th>
-						<th>Oficina</th>
+						{{-- <th>Oficina</th> --}}
 						<th>Precio €</th>
                         <th>Acciones</th>
 
@@ -26,7 +26,7 @@
 						<td>{{$price->id}}</td>
 						<td>{{$price->class->class}}</td>
 						 <td>{{$price->description}}</td>
-						 <td>{{$price->office->office_address}}</td>
+						  {{-- <td>{{$price->office->office_address}}</td> --}}
 						<td><strong> (</strong>{{number_format($price->total_premium, 2)}} €<strong>)</strong> {{number_format($price->total_premium * $foreign_reference, 2)}} <strong> Bs </strong></td>
                         <td class="text-center col-2">
 							{{-- <a href="/admin/index-price/{{$price->id}}" class="btn bg-transparent pr-4" style="width: 5px; color: #f2a413;"><i class="fas fa-eye"></i></a> --}}

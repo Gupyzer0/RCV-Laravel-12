@@ -1,4 +1,4 @@
-@extends('layouts.admin-modules')
+@extends('layouts.app')
 @section('module')
 <div class="card shadow mb-2">
     <div class="card-header py-2">

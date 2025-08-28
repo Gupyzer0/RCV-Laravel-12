@@ -17,20 +17,23 @@ class PolizasScope implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
-        $user = Auth::user();
-        // Si es un administrador buscamos si el policy tiene el mismo "type" que el admin
-        if($user->hasRole('administrador')) {
-            $builder->where('type',$user->type);
-        }
+        if (Auth::hasUser()) // De esta forma podemos usar tinker . . .
+        {
+            $user = Auth::user();
+            // Si es un administrador buscamos si el policy tiene el mismo "type" que el admin
+            if($user->hasRole('administrador')) {
+                $builder->where('type',$user->type);
+            }
 
-        // Si es moderador buscamos que la poliza sea de uno de los usuarios moderadors por este
-        if($user->hasRole('moderador')) {
-            $builder->whereIn('user_id', $user->usuarios_moderados->pluck('id'));
-        }
+            // Si es moderador buscamos que la poliza sea de uno de los usuarios moderadors por este
+            if($user->hasRole('moderador')) {
+                $builder->whereIn('user_id', $user->usuarios_moderados->pluck('id'));
+            }
 
-        // Si es un usuario buscamos que la poliza le pertenezca
-        if($user->hasRole('usuario')) {
-            $builder->where('user_id', $user->id);
+            // Si es un usuario buscamos que la poliza le pertenezca
+            if($user->hasRole('usuario')) {
+                $builder->where('user_id', $user->id);
+            }
         }
     }
 }

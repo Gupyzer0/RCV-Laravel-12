@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Accidents;
-use App\Bank;
-use App\Policy;
+use App\Models\Accidents;
+use App\Models\Bank;
+use App\Models\Policy;
 use Auth;
-use Illuminate\Support\Facades\Validator;
 
 class AccidentsController extends Controller
 {

@@ -1,4 +1,4 @@
-@extends('layouts.admin-modules')
+@extends('layouts.app')
 <?php use \App\Http\Controllers\PaymentsController; ?>
 
 @section('module')

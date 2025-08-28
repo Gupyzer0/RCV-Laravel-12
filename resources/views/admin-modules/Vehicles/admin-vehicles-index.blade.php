@@ -1,4 +1,4 @@
-@extends('layouts.admin-modules')
+@extends('layouts.app')
 
 @section('module')
 <a class="btn btn-light shadow" href="{{ route('index.vehicle.classes')}}">Ver clases</a>

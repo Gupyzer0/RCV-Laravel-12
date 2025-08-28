@@ -27,17 +27,8 @@ class PolizasController extends Controller
     {
         // Filtrando posibles vendedores a mostrar para los filtros, por logica solo los administradores y
         // supervisores requieren de esto.
-        $user = Auth::user();
+        $vendedores = User::filtrarPorUsuarioAutenticado()->get();
         
-        if($user->hasRole('administrador'))
-        {
-            $vendedores = User::role('usuario')->where('type', $user->type)->get();
-        }
-        elseif($user->hasRole('moderador'))
-        {
-            $vendedores = $user->usuarios_moderados;
-        }
-
         $polizas = Policy::orderByDesc('created_at')//whereIn('user_id', Auth::user()->usuarios_moderados->pluck('id')) // solo polizas de los supervisados
             ->FiltrarNPoliza($request->filtro_poliza)
             ->FiltrarCedulaCliente($request->filtro_cedula)

@@ -19,7 +19,11 @@ use App\Http\Controllers\PaymentsController;
 // use App\Http\Controllers\ChangeUsersPassword;
 // use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerifyController;
+
+// Controladores nuevos
 use App\Http\Controllers\PolizasController;
+use App\Http\Controllers\PagosController;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -62,6 +66,7 @@ Route::get('/condiciones', [VerifyController::class, 'downloadConditions'])->nam
 // Polizas
 Route::middleware(['auth'])->group(function () {
     
+    // Polizas
     Route::get('/polizas', [PolizasController::class, 'index'])->name('polizas.index');
 
     Route::middleware(['can:view,poliza'])->group(function () {
@@ -80,7 +85,16 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('/polizas/{poliza}/anular', [PolizasController::class, 'anular'])->name('polizas.anular');
         Route::patch('/polizas/{poliza}/desanular', [PolizasController::class, 'desanular'])->name('polizas.desanular');
     });
+
+    // Pagos
+    Route::get('/pagos/pendientes-por-vendedor', [PagosController::class, 'pendientes_por_vendedor'])->name('pagos.pendientes-por-vendedor');
+    Route::get('/pagos/pendientes-por-supervisor', [PagosController::class, 'pendientes_por_supervisor'])->name('pagos.pendientes-por-supervisor');
+    Route::get('/pagos/pendientes/vendedor/{user}', [PagosController::class, 'pendientes'])->name('pagos.pendientes');
+    Route::get('/pagos', [PagosController::class, 'index'])->name('pagos.index');
 });
+
+
+
 
 
 //Consultas AJAX

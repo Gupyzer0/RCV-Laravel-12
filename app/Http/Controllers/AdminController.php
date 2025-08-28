@@ -4,35 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Spatie\Activitylog\Models\Activity;
-use Spatie\QueryBuilder\QueryBuilder;
-use App\User;
-use App\Admin;
-use App\Moderator;
-use App\Payment;
-use App\Vehicle;
-use App\Policy;
-use App\Office;
-use App\ActivityLog;
-use App\ForeignUnit;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Carbon\Carbon;
+
+use App\Models\User;
+use App\Models\Admin;
+use App\Models\Moderator;
+use App\Models\Payment;
+use App\Models\Policy;
+use App\Models\Office;
+use App\Models\ActivityLog;
+use App\Models\ForeignUnit;
 
 class AdminController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
+    // /**
+    //  * Create a new controller instance.
+    //  *
+    //  * @return void
+    //  */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:admin');
+    // }
 
     /**
      * Show the application dashboard.

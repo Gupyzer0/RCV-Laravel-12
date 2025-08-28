@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Office;
-use App\Estado;
-use App\Municipio;
-use App\Parroquia;
+use App\Models\Office;
+use App\Models\Estado;
+use App\Models\Municipio;
+use App\Models\Parroquia;
 use Auth;
 
 class OfficesController extends Controller

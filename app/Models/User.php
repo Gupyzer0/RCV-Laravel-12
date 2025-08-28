@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class User extends Authenticatable
@@ -80,6 +81,26 @@ class User extends Authenticatable
         ];
     }
 
+    // Scopes
+
+    /**
+     * Scope que filtra a los usuarios dependiendo del rol del usuario autenticado
+     */
+    public function scopeFiltrarPorUsuarioAutenticado($query) {
+
+        $user = Auth::user();
+
+        if($user->hasRole('administrador'))
+        {
+            return $query->where('type', $user->type);
+        } 
+        elseif($user->hasRole('moderador')) 
+        {
+            return $query->whereIn('id', $user->usuarios_moderados->pluck('id'));
+        }       
+    }
+
+    // Relaciones
     public function vehicles()
     {
         return $this->hasMany(Vehicle::class);
@@ -94,10 +115,10 @@ class User extends Authenticatable
         return $this->hasMany(Payment::class);
     }
 
-    public function office()
-    {
-        return $this->belongsTo(Office::class, 'office_id', 'id')->withTrashed();
-    }
+    // public function office()
+    // {
+    //     return $this->belongsTo(Office::class, 'office_id', 'id')->withTrashed();
+    // }
 
     // Moderador (supervisor) asignado
     public function moderator()
@@ -126,8 +147,84 @@ class User extends Authenticatable
         return $this->hasMany(Policy::class, 'user_id', 'id')->where('status', 1)->where('type', $this->type);
     }
 
+    // Atributos
+
+    /**
+     * Obtiene el nombre completo
+     */
     public function getNombreCompletoAttribute()
     {
         return Str::title($this->name . ' ' . $this->lastname);
+    }
+
+    // Helpers
+
+    /**
+     * Ultimo pago recibido
+     */
+    public function ultimo_pago_recibido()
+    {
+        if($this->payments->isNotEmpty())
+        {
+            return $this->payments->sortByDesc('created_at')->first()->created_at;
+        }
+    }
+
+    /**
+     * Polizas vendidas sin pagar
+     */
+    public function polizas_vendidas_sin_pagar()
+    {
+        return $this->policies->where('status',0);
+    }
+
+    /**
+     * Polizas reportadas sin pagar
+     */
+    public function polizas_reportadas_sin_pagar()
+    {
+        return $this->policies->where('status',0)->where('report',1);
+    }
+
+    /**
+     * Polizas Anuladas
+     */
+    public function polizas_anuladas()
+    {
+        return $this->policies->where('statusu',1);
+    }
+
+    /**
+     * Total de las polizas pendientes sin pagar
+     */
+    public function total_polizas_sin_pagar()
+    {
+        return $this->policies->where('status',0)->where('statusu',null)->sum('total_premium');
+    }
+
+    /**
+     * Total a recibir por las polizas vendidas por este usuario
+     */
+    public function total_a_recibir()
+    {
+        return User::profit_percentage($this->total_polizas_sin_pagar(), $this->profit_percentage);
+    }
+
+    /**
+     * Comision de las polizas sin pagar
+     */
+    public function comision_polizas_sin_pagar()
+    {
+        return $this->total_polizas_sin_pagar() - $this->total_a_recibir();
+    }
+
+    /**
+     * Calculo de comisión ... 
+     */
+    public static function profit_percentage($value1, $value3)
+    {
+        $suma = ($value3 * $value1) / 100;
+        $result = $value1 - $suma;
+        return $result;
     }
 }

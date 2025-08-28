@@ -1,4 +1,4 @@
-@extends('layouts.admin-modules')
+@extends('layouts.app')
 <?php use \App\Http\Controllers\PaymentsController; ?>
 
 @section('module')
@@ -24,7 +24,7 @@
 				<thead>
 					<tr>
 						<th>Vendedor</th>
-						<th>Oficina</th>
+						{{-- <th>Oficina</th> --}}
 						<th>Último pago</th>
 						<th>Porcentaje (%)</th>
 						<th>Acciones</th>
@@ -36,7 +36,7 @@
 						@if($user->payments()->count() > 0)
 						<tr>
 							<td>{{ $user->nombre_completo }}</td>
-							<td>{{$user->office->office_address}}</td>
+							{{-- <td>{{$user->office->office_address}}</td> --}}
 							<td class="text-success">TODO: Fecha del ultiumo pago a este vendedor</td>
 							<td class="text-warning">{{$user->profit_percentage.'%'}}</td>
 							<?php $total_all = PaymentsController::policies_not_paid_price($user->id)?>
@@ -60,7 +60,7 @@
 											class="d-inline-block">
 											@csrf
 											<input type="hidden" value="{{$user->name.' '.$user->lastname}}" name="name">
-											<input type="hidden" value="{{$user->office->office_address}}" name="office">
+											{{-- <input type="hidden" value="{{$user->office->office_address}}" name="office"> --}}
 											<input type="hidden" value="{{$user->id}}" name="user_id">
 											<input type="hidden" value="{{PaymentsController::policies_not_paid_price($user->id)}}" name="total">
 											<input type="hidden" value="{{$user->profit_percentage}}" name="profit_percentage">
