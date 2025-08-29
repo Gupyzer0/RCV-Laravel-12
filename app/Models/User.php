@@ -97,7 +97,13 @@ class User extends Authenticatable
         elseif($user->hasRole('moderador')) 
         {
             return $query->whereIn('id', $user->usuarios_moderados->pluck('id'));
-        }       
+        }
+    }
+
+    public function scopeFiltrarPorModerador($query, $filtro) {
+        if($filtro) {
+            return $query->where('mod_id',$filtro);
+        }
     }
 
     // Relaciones
@@ -207,15 +213,25 @@ class User extends Authenticatable
      */
     public function total_a_recibir()
     {
-        return User::profit_percentage($this->total_polizas_sin_pagar(), $this->profit_percentage);
+        return User::profit_percentage($this->total_polizas_sin_pagar(), $this->profit_percentage + $this->moderator->profit_percentage);
     }
 
     /**
      * Comision de las polizas sin pagar
+     * 
+     * Devuelve arreglo con la comision total a pagar, la comision para el usuario y la comision para el moderador
+     * TODO: evitar llamar este metodo para un moderador?
      */
     public function comision_polizas_sin_pagar()
     {
-        return $this->total_polizas_sin_pagar() - $this->total_a_recibir();
+        $total_polizas_sin_pagar = $this->total_polizas_sin_pagar();
+        $comision_total = $total_polizas_sin_pagar - $this->total_a_recibir();
+        $comision_usuario = $total_polizas_sin_pagar * $this->profit_percentage / 100;
+        $comision_moderador = $total_polizas_sin_pagar * $this->moderator->profit_percentage / 100;
+        return [
+            'comision_total' => $comision_total, 
+            'comision_usuario' => $comision_usuario,
+            'comision_moderador' => $comision_moderador];
     }
 
     /**

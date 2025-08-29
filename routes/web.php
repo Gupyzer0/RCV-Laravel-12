@@ -87,15 +87,14 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // Pagos
-    Route::get('/pagos/pendientes-por-vendedor', [PagosController::class, 'pendientes_por_vendedor'])->name('pagos.pendientes-por-vendedor');
-    Route::get('/pagos/pendientes-por-supervisor', [PagosController::class, 'pendientes_por_supervisor'])->name('pagos.pendientes-por-supervisor');
-    Route::get('/pagos/pendientes/vendedor/{user}', [PagosController::class, 'pendientes'])->name('pagos.pendientes');
     Route::get('/pagos', [PagosController::class, 'index'])->name('pagos.index');
+    Route::get('/pagos/pendientes', [PagosController::class, 'pendientes'])->name('pagos.pendientes');
+    Route::patch('/pagos/pendientes/cerrar', [PagosController::class, 'cierre_pagos_pendientes'])->name('pagos.pendientes.cierre');
+    Route::patch('/pagos/pendientes/user/{user}/cierre', [PagosController::class, 'cierre_por_usuario'])->name('pagos.pendientes.cierre-por-usuario');
+    Route::get('/pagos/pendientes/user/{user}/pdf', [PagosController::class, 'pdf_polizas_pendientes_por_pagar'])->name('pagos.pendientes.pdf');
+    Route::get('pagos/pendientes/user/{user}', [PagosController::class, 'pendientes_por_usuario'])->name('pagos.pendientes.por-usuario');
+    
 });
-
-
-
-
 
 //Consultas AJAX
 Route::post('/validate-p2p/{policy}', [PaymentsController::class, 'validateP2P'])->name('api.validate-p2p');
